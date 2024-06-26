@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@influxdata/influxdb-client": "^1.33.2",
+    "dotenv": "^16.4.5",
     "modbus-serial": "^8.0.17"
   },
   "type": "module"

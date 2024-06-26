@@ -10,8 +10,8 @@ class UPS {
     }
 
     async connect() {
-        await this.client.connectRTUBuffered(devicePath, { baudRate });
-        this.client.setID(deviceId);
+        await this.client.connectRTUBuffered(this.devicePath, { baudRate: this.baudRate });
+        this.client.setID(this.deviceId);
         this.client.setTimeout(500);
         return
     }
