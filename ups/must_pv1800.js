@@ -1,4 +1,4 @@
-import UPS from "./ups";
+import UPS from "./ups.js";
 
 class MustPV1800 extends UPS {
     constructor(devicePath) {
@@ -17,7 +17,7 @@ class MustPV1800 extends UPS {
         }
 
         let { soc } = await this.client.readHoldingRegisters(25200, 75)
-       
+
         return {
             batVolts: soc[5] / 10.0,
             inputVolts: soc[7], // 10

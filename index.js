@@ -1,6 +1,6 @@
 import 'dotenv/config'
 import { InfluxDB, Point } from "@influxdata/influxdb-client"
-import { MustPV1800 } from "./ups/index"
+import { MustPV1800 } from "./ups/index.js"
 
 const USB_DEVICE = process.env.USB_DEVICE || '/dev/ttyUSB0'
 const URL = process.env.INFLUXDB_URL || 'http://localhost:8086'
