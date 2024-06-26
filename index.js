@@ -1,5 +1,5 @@
 import { InfluxDB, Point } from "@influxdata/influxdb-client"
-import { MustPV1800 } from "./ups"
+import { MustPV1800 } from "./ups/index"
 
 const url = process.env.INFLUXDB_URL || 'http://localhost:8086'
 const token = process.env.INFLUXDB_TOKEN || 'a9TqxAipoEd3DO0JFGEnHFYlsmVHkayuE3m8-JLRNISgjqjfXPgioOL7rbK5fGCEtYJOGw7irJxRDTRA788K3g=='

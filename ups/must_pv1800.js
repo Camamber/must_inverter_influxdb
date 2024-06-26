@@ -6,8 +6,6 @@ class MustPV1800 extends UPS {
     }
 
     async sample() {
-        let register = await this.client.readHoldingRegisters(5, 2)
-
         let states = {
             0: "PowerOn",
             1: "SelfTest",
