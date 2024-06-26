@@ -16,6 +16,13 @@ class UPS {
         return
     }
 
+    async disconnect() {
+        this.client.close();
+        this.client.destroy()
+        return
+    }
+
+
     sample() {
         return null;
     }
