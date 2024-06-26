@@ -28,4 +28,4 @@ async function main() {
   // writeClient.flush()
 }
 
-main
+main()
