@@ -19,13 +19,21 @@ async function main() {
   const sample = await ups.sample();
   console.log(sample)
 
-  // const point = new Point('logs')
-  //   .tag('host', 'PV18-3024VPM')
-  //   .tag("state", sample.state)
+  const point = new Point('logs')
+    .tag('host', 'PV18-3024VPM')
+    .tag("state", sample.state)
+    .floatField("bat_volts", sample.batVolts)
+    .floatField("bat_amps", sample.batAmps)
+    .floatField("soc", sample.batCharge,)
+    .floatField("ac", sample.inputVolts,)
+    .floatField("load_percent", sample.loadPercent)
+    .floatField("output_va", sample.outputVA)
+    .floatField("output_w", sample.outputW)
+    .floatField("temp", sample.tempInt)
+    .floatField("discharge", sample.discharge)
 
-
-  // writeClient.writePoint(point)
-  // writeClient.flush()
+  writeClient.writePoint(point)
+  writeClient.flush()
   await ups.disconnect()
 }
 
