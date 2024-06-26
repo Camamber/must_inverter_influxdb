@@ -26,6 +26,7 @@ async function main() {
 
   // writeClient.writePoint(point)
   // writeClient.flush()
+  await ups.disconnect()
 }
 
 main()
