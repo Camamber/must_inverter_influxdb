@@ -17,8 +17,8 @@ class UPS {
     }
 
     async disconnect() {
-        this.client.close(console.log);
-        this.client.destroy(console.log)
+        this.client.close(() => { });
+        this.client.destroy(() => { })
         return
     }
 
