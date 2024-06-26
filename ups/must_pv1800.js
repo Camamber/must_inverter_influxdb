@@ -18,38 +18,8 @@ class MustPV1800 extends UPS {
 
         let { data: soc } = await this.client.readHoldingRegisters(25200, 75)
 
-        const map = {
-            1: ["WorkState", 1, "map",],
-            5: ["BatteryVoltage", 0.1, "V"],
-            6: ["InverterVoltage", 0.1, "V"],
-            7: ["GridVoltage", 0.1, "V"],
-            8: ["BUSVoltage", 0.1, "V"],
-            9: ["ControlCurrent", 0.1, "A"],
-            10: ["InverterCurrent", 0.1, "A"],
-            11: ["GridCurrent", 0.1, "A"],
-            12: ["LoadCurrent", 0.1, "A"],
-            13: ["InverterPower(P)", 1, "W"],
-            14: ["GridPower(P)", 1, "W"],
-            15: ["LoadPower(P)", 1, "W"],
-            16: ["LoadPercent", 1, "%"],
-            17: ["InverterComplexPower(S)", 1, "VA"],
-            18: ["GridComplexPower(S)", 1, "VA"],
-            19: ["LoadComplexPower(S)", 1, "VA"],
-            21: ["InverterReactivePower(Q)", 1, "var"],
-            22: ["GridReactivePower(Q)", 1, "var"],
-            23: ["LoadReactivePower(Q)", 1, "var"],
-            25: ["InverterFrequency", 0.01, "Hz"],
-            26: ["GridFrequency", 0.01, "Hz"],
-            33: ["ACRadiatorTemperature", 1, "C"],
-            34: ["TransformerTemperature", 1, "C"],
-            35: ["DCRadiatorTemperature", 1, "C"],
-            73: ["BatteryPower", 1, "W"],
-            74: ["BatteryCurrent", 1, "A"],
-        }
-
-
         return {
-            workState: soc[1],
+            workState: states[soc[1]],
             batteryVoltage: soc[5] * 0.1,
             inverterVoltage: soc[6] * 0.1,
             gridVoltage: soc[7] * 0.1,
@@ -73,6 +43,14 @@ class MustPV1800 extends UPS {
             acRadiatorTemperature: soc[33],
             transformerTemperature: soc[34],
             dcRadiatorTemperature: soc[35],
+            accumulatedChargerPower: soc[45] * 1000 + soc[46] * 0.1,
+            accumulatedDischargerPower: soc[47] * 1000 + soc[48] * 0.1,
+            accumulatedBuyPower: soc[49] * 1000 + soc[50] * 0.1,
+            accumulatedSellPower: soc[51] * 1000 + soc[52] * 0.1,
+            accumulatedLoadPower: soc[53] * 1000 + soc[54] * 0.1,
+            accumulatedSelfUsePower: soc[55] * 1000 + soc[56] * 0.1,
+            accumulatedPvSellPower: soc[57] * 1000 + soc[58] * 0.1,
+            accumulatedGridChargerPower: soc[59] * 1000 + soc[60] * 0.1,
             batteryPower: soc[73],
             batteryCurrent: soc[74],
         }

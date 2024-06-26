@@ -9,8 +9,8 @@ const org = process.env.INFLUXDB_ORG || `camamber`
 const bucket = process.env.INFLUXDB_BUCKET || `home`
 
 async function main() {
-  // const client = new InfluxDB({ url: URL, token: TOKEN })
-  // let writeClient = client.getWriteApi(org, bucket, 'ns')
+  const client = new InfluxDB({ url: URL, token: TOKEN })
+  let writeClient = client.getWriteApi(org, bucket, 'ns')
 
   const ups = new MustPV1800(USB_DEVICE)
 
