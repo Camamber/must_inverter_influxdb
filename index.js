@@ -12,7 +12,7 @@ async function main() {
   // const client = new InfluxDB({ url: URL, token: TOKEN })
   // let writeClient = client.getWriteApi(org, bucket, 'ns')
 
-  const ups = new MustPV1800()
+  const ups = new MustPV1800(USB_DEVICE)
 
   await ups.connect()
 
