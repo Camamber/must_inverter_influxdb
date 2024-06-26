@@ -16,12 +16,12 @@ class MustPV1800 extends UPS {
             6: "GridCharging"
         }
 
-        let { soc } = await this.client.readHoldingRegisters(25200, 75)
+        let { data: soc } = await this.client.readHoldingRegisters(25200, 75)
 
         return {
             batVolts: soc[5] / 10.0,
             inputVolts: soc[7], // 10
-            batAmps: soc[74] > 32768 ? batAmps - 65536 : batAmps,
+            batAmps: soc[74] > 32768 ? soc[74] - 65536 : soc[74],
             batCharge: 0,
             discharge: soc[54],
             loadPercent: soc[16],
